@@ -32,14 +32,14 @@
 
 /* carousel */
 #main .carousel-item img {
-    max-height: 75vh;
-    filter: grayscale(70%);
+    height: 100vh;
+    filter: grayscale(50%);
     object-fit: cover;
+    margin-top: -74px;
 }
 
 #carousel {
     position: relative;
-
 }
 
 .overlay {
@@ -115,7 +115,6 @@ textarea {
 .biggerLogo{
     width: 350px !important;
     height: 250px !important;
-
 }
 
 /* footer */
