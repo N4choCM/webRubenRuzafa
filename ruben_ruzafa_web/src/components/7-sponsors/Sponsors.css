@@ -1,0 +1,17 @@
+/* sponsors */
+#no-border{
+  border: 0px !important;
+}
+
+.bigger-logo{
+  width: 350px !important;
+  height: 250px !important;
+}
+
+.orca-logo {
+  margin-top: 45px !important;
+}
+
+.row-margin-correction {
+  --bs-gutter-x: 0 !important;
+}

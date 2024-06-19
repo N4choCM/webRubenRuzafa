@@ -1,0 +1,74 @@
+/* TODO: Check what is deprecated and what is not */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.ancla:before{
+  display:block;
+  content:" ";
+  margin-top: -74px;
+  height: 74px;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+}
+
+footer {
+	flex-shrink: 0;
+}
+
+.custom-spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	color: #4c4c6d;
+}
+
+
+.anchor:before {
+  display: block;
+  content: " ";
+  margin-top: -66px;
+  height: 66px;
+}
+
+.custom-shadow-light {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.custom-shadow-dark {
+  box-shadow: rgba(255, 255, 255, 0.65) 0px 5px 15px;
+}
+
+.bg-dark {
+  background-color: #eee  !important;
+}
+
+.img-cover {
+  object-fit: cover;
+}
+
+.bg-red-ruben {
+	background-color: #e2001a !important;
+}
+
+.bg-red-ruben:hover {
+	background-color: #b20013 !important;
+}
