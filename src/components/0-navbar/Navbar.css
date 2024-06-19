@@ -1,0 +1,125 @@
+.img-logo {
+	width: 10rem;
+	border-radius: 5px;
+}
+
+.bg-navbar-ruben {
+	background-color: #e2001a !important;
+}
+
+.navbar-hover-custom:hover {
+	background-color: #b20013 !important;
+	border-radius: 5px;
+}
+
+.custom-text-dark {
+	color: black !important;
+}
+
+.custom-text-dark:hover {
+	color: white !important;
+}
+
+/* Increase specificity if necessary */
+.nav-item.custom-text-dark .nav-link,
+.nav-item.custom-text-dark .nav-link:hover {
+	color: black !important;
+}
+
+.nav-item.custom-text-dark .nav-link:hover {
+	color: white !important;
+}
+
+/* Anulando la variable de color de enlace de navegación de Bootstrap */
+.navbar-nav .nav-link {
+	--bs-nav-link-color: white !important; /* Color para enlaces */
+	--bs-nav-link-hover-color: white !important; /* Color para enlaces en hover */
+}
+
+/* Si quieres más especificidad, puedes usar un selector más específico */
+.navbar .navbar-nav .nav-item .nav-link {
+	--bs-nav-link-color: white !important; /* Color para enlaces */
+	--bs-nav-link-hover-color: white !important; /* Color para enlaces en hover */
+}
+
+.navbar-brand div {
+	display: flex;
+	align-items: center;
+}
+h4,
+h6 {
+	font-family: monospace;
+}
+
+.form-check-input:checked {
+	background-color: #333 !important;
+	border-color: #333 !important;
+}
+
+.form-check-input:focus {
+	box-shadow: none !important;
+}
+
+.custom-pointer {
+	cursor: pointer;
+}
+
+@media (min-width: 992px) {
+	.swal2-popup {
+		margin-top: 5rem !important;
+	}
+}
+
+.cm-pointer {
+	cursor: pointer !important;
+}
+
+.cm-hr-light {
+  border-top: 1px solid #eaeaea !important;
+}
+
+.navbar {
+	transition: background-color 500ms ease-in-out;
+}
+
+.navbar-transparent {
+  background-color: #00000080 !important;
+}
+
+.img-fit {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav .nav-link span {
+		font-size: 20px; /* Tamaño de fuente más grande para móviles */
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-bigger {
+    margin-left: 12px;
+		width: 30px; /* Tamaño de fuente más grande para móviles */
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-bigger-dark-mode {
+		width: 30px; /* Tamaño de fuente más grande para móviles */
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link .mobile-bigger {
+  vertical-align: middle;
+  margin-right: 2px; /* Ajusta este valor según la separación que desees */
+}
+
+
+
