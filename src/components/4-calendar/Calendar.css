@@ -1,0 +1,12 @@
+.header-row {
+  --bs-table-color: white !important;
+  --bs-table-bg: #E20019 !important;
+}
+
+.table-border {
+  border-radius: 5px !important;
+}
+
+.tbody-bg-dark {
+  --bs-table-bg: #EEE !important;
+}

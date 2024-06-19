@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
+
+.container-carousel {
+	position: relative;
+	height: 100vh;
+}
+.container-carousel img {
+	height: 100%;
+	object-position: top;
+}
+
+.carousel-item {
+	height: 100vh;
+}
+
+.overlay {
+	font-family: "Ubuntu Condensed", sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 99;
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+.overlay h1 {
+	font-size: 50px;
+}
+
+.btn-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-banner-custom {
+  background-color: #e2001a !important;
+	border: 1px solid #fff !important;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-banner-custom:hover {
+	background-color: #b20013 !important;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+  position: relative;
+  opacity: 1;
+}
