@@ -1,29 +1,27 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-scroll";
-import bannerPic1 from "../../assets/img/bike_16-9.jpg";
+import { useEffect, useState, useContext } from "react";
 import "./Banner.css";
-import bannerPic2 from "../../assets/img/swimming.jpg";
-import bannerPic3 from "../../assets/img/running.jpg";
-import { useEffect, useState } from "react";
+import { AppStateContext } from "../../state/AppProvider";
 
-const images = [bannerPic1, bannerPic2, bannerPic3];
-
-const Banner = () => {
-	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const Banner = ({ images, heading1, heading2, buttonText, buttonLink }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const appStateContext = useContext(AppStateContext);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 7500);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
-	return (
-		<div
-			id="home"
-			className="carousel slide carousel-fade"
-			data-bs-ride="carousel"
-		>
-			<div className="carousel-inner">
+  return (
+    <div
+      id="home"
+      className="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div className="carousel-inner">
         {images.map((image, index) => (
           <div
             className={`carousel-item ${index === currentImageIndex ? "active" : ""}`}
@@ -42,24 +40,24 @@ const Banner = () => {
           <div className="row h-100 align-items-center">
             <div className="col-12 col-md-8 col-lg-6 text-md-start text-center">
               <h1 className="d-none d-md-block text-white fw-bolder">
-                3x XTERRA &amp; 4x ITU
+                {heading1}
               </h1>
               <h1 className="d-none d-md-block text-white fw-bolder">
-                World Champion
+                {heading2}
               </h1>
             </div>
           </div>
         </div>
-        <div className="h-100 d-flex flex-column align-items-center justify-content-center text-white p-3">
-          <Link to="about" smooth={true} duration={200}>
-            <button className={"btn btn-bottom btn-banner-custom text-white px-3 py-2"}>
-              ¡Conóceme! 😀
+        <div className="d-flex flex-column align-items-center justify-content-center text-white p-3">
+          <Link to={buttonLink} smooth={true} duration={200}>
+            <button className={`btn btn-bottom btn-banner-custom${appStateContext?.state.isCoachScreen ? "-coach" : ""} text-white px-3 py-2`}>
+              {buttonText}
             </button>
           </Link>
         </div>
       </div>
-		</div>
-	);
+    </div>
+  );
 };
 
 export default Banner;

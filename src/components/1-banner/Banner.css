@@ -45,6 +45,17 @@
 	background-color: #b20013 !important;
 }
 
+.btn-banner-custom-coach {
+  background-color: #000 !important;
+	color: #fff !important;
+	border: 1px solid #fff !important;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.btn-banner-custom-coach:hover {
+	background-color: #222 !important;
+}
+
 .carousel-inner {
   position: relative;
   width: 100%;
