@@ -1,0 +1,52 @@
+.row{
+  --bs-gutter-x: 0 !important;
+}
+
+.footer {
+  background-color: #E20019;
+  padding: 0px 0px;
+}
+
+.footer .row {
+  min-height: 75px;
+  text-align: center;
+}
+
+.footer-items {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-items:hover {
+  color: rgb(169, 166, 166);
+}
+
+.social-icons {
+  color: white;
+  font-size: 1.75rem;
+}
+
+.social-icons:hover {
+  color: rgb(169, 166, 166);
+}
+
+#logo-footer{
+  margin-left: auto;
+  margin-right: auto;
+  width: 75vw;
+  height: 20vw;
+}
+
+#logo-footer-md{
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+  height: 15vw;
+}
+
+#logo-footer-lg{
+  margin-left: auto;
+  margin-right: auto;
+  width: 25vw;
+  height: auto;
+}
