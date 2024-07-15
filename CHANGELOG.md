@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.0
+
+### Releases
+
+- 🚀 RELEASED: Version 2.0.0!
+
 ## 1.2.0
 
 ### Features
