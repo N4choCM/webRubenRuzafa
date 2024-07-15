@@ -1,14 +1,15 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  build: {
-    outDir: "./static",
-    emptyOutDir: true,
-    sourcemap: true,
-    chunkSizeWarningLimit: 1000
+  server: {
+    port: 3000,
+    open: true,
+    strictPort: true,
   },
-  base: './',
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+  },
 })
