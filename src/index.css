@@ -39,7 +39,8 @@ img, video, svg {height: auto; max-width: 100%; }
 
 /* CUSTOM CSS RESET */
 ::selection {
-	background-color: #CD7F32;
+	background-color: #e2001a;
+  color: white;
 }
 
 ::-webkit-scrollbar {
@@ -61,7 +62,7 @@ body.app-mode-dark {
 }
 
 body.app-mode-light {
-	background-color: #F5F5F5;
+	background-color: #ededed;
 	color: black;
 }
 

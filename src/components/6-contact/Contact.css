@@ -7,3 +7,12 @@
   width: 80%;
   max-width: 600px;
 }
+
+.bg-contact-black {
+	background-color: #000 !important;
+  border-color: #fff !important;
+}
+
+.bg-contact-black:hover {
+  background-color: #222 !important;
+}

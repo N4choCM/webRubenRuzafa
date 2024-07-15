@@ -72,3 +72,7 @@ footer {
 .bg-red-ruben:hover {
 	background-color: #b20013 !important;
 }
+
+.mt-custom {
+	margin-top: 12vh !important;
+}

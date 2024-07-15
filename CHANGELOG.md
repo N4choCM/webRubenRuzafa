@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 1.2.0
+
+### Features
+
+- ⬆ UPDATED: Optimized Navbar for both Coach & Pro Screens 
+- ⬆ UPDATED: Optimized Banner for both Coach & Pro Screens 
+- ⬆ UPDATED: Styling for Best Results Component
+- ⬆ UPDATED: Table responsiveness in Results table
+- ⬆ UPDATED: Optimized Contact for both Coach & Pro Screens 
+- ⬆ UPDATED: Optimized Footer for both Coach & Pro Screens 
+- ✅ ADDED: Coach Screen and its components
+- ⬆ UPDATED: Optimized LegalWarningScreen for both Cookies, Privacy Policy & Legal Warnings 
+
 ## 1.1.2
 
 ### Fixes

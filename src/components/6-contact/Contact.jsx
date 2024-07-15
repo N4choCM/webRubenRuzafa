@@ -1,15 +1,27 @@
 import "./Contact.css";
 import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close'; // Importa CloseIcon
+import { AppStateContext } from '../../state/AppProvider';
 
 const Contact = () => {
+  const appStateContext = useContext(AppStateContext);
   const form = useRef();
   const [alert, setAlert] = useState({ show: false, type: '', message: '' });
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!form.current.checkValidity()) {
+      setAlert({
+        show: true,
+        type: 'error',
+        message: 'Por favor, complete todos los campos antes de enviar el mensaje.',
+      });
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -25,9 +37,8 @@ const Contact = () => {
             type: 'success',
             message: '¡Email enviado correctamente!',
           });
-          form.current.reset(); // Reset the form
+          form.current.reset();
 
-          // Hide the alert after 5 seconds
           setTimeout(() => {
             setAlert({ show: false, type: '', message: '' });
           }, 5000);
@@ -40,7 +51,6 @@ const Contact = () => {
           });
           console.log('FAILED...', error.text);
 
-          // Hide the alert after 5 seconds
           setTimeout(() => {
             setAlert({ show: false, type: '', message: '' });
           }, 5000);
@@ -64,7 +74,7 @@ const Contact = () => {
         {alert.show && (
           <div className="alert-container">
             <Alert
-              icon={<CheckIcon fontSize="inherit" />}
+              icon={alert.type === 'success' ? <CheckIcon fontSize="inherit" /> : <CloseIcon fontSize="inherit" />}
               severity={alert.type}
               onClose={() => setAlert({ show: false, type: '', message: '' })}
             >
@@ -78,7 +88,7 @@ const Contact = () => {
           ref={form}
           onSubmit={sendEmail}
         >
-          <div className="col-12 col-md-8 offset-md-2">
+          <div className="col-10 col-md-8 offset-1 offset-md-2">
             <input
               type="text"
               className="form-control"
@@ -87,7 +97,7 @@ const Contact = () => {
               name="name"
             />
           </div>
-          <div className="col-12 col-md-8 offset-md-2 mt-3">
+          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3">
             <input
               type="email"
               className="form-control"
@@ -96,7 +106,7 @@ const Contact = () => {
               name="email"
             />
           </div>
-          <div className="col-12 col-md-8 offset-md-2 mt-3">
+          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3">
             <textarea
               className="form-control"
               rows="5"
@@ -105,9 +115,9 @@ const Contact = () => {
               name="message"
             />
           </div>
-          <div className="col-12 col-md-8 offset-md-2 mt-3 d-grid pb-5">
+          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3 d-grid pb-5">
             <button
-              className="btn bg-red-ruben text-white"
+              className={`btn bg-${appStateContext?.state.isCoachScreen && appStateContext?.state.isDarkMode ? "contact-black" : appStateContext?.state.isCoachScreen && !appStateContext?.state.isDarkMode ? "contact-black" : "red-ruben"} text-white`}
               type="submit"
               value="Send"
             >

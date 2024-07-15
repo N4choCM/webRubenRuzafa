@@ -6,6 +6,8 @@ export const appStateReducer = (state, action) => {
       return { ...state, isDarkMode: !state.isDarkMode };
     case Action.LOGIN:
       return { ...state, isLoggedIn: true };
+    case Action.TOGGLE_COACH_SCREEN:
+      return { ...state, isCoachScreen: action.payload };
     default:
       return state;
   }
