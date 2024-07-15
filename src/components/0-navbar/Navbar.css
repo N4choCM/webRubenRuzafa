@@ -1,6 +1,6 @@
 .img-logo {
 	width: 10rem;
-	border-radius: 5px;
+	border-radius: 4px;
 }
 
 .bg-navbar-ruben {
@@ -9,7 +9,14 @@
 
 .navbar-hover-custom:hover {
 	background-color: #b20013 !important;
-	border-radius: 5px;
+	border-radius: 4px;
+	color: #fff !important;
+}
+
+.navbar-hover-custom-coach:hover {
+	background-color: #fff !important;
+	border-radius: 4px;
+	color: #000 !important;
 }
 
 .custom-text-dark {
@@ -121,5 +128,22 @@ h6 {
   margin-right: 2px; /* Ajusta este valor según la separación que desees */
 }
 
+.mui-icon {
+	font-size: 1.15rem !important;
+}
 
+.training-item {
+	border: solid 1.5px #eaeaea;
+	border-radius: 4px;
+}
+
+.navbar-flex {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.bg-black {
+	background-color: #0A0A0A !important;
+}
 
