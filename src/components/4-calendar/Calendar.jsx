@@ -19,31 +19,33 @@ const Calendar = () => {
           </div>
         </div>
         <div className="row row-cols-1 mx-auto">
-          <table className="table table-bordered table-hover">
-            <thead className="header-row">
-              <tr>
-                <th>Fecha</th>
-                <th>Prueba</th>
-                <th>Lugar</th>
-                <th className="text-center">Resultado</th>
-              </tr>
-            </thead>
-            <tbody 
-              className={
-                `table-group-divider 
-                ${appStateContext?.state.isDarkMode ? "tbody-bg-dark" : ""}`
-              }
-            >
-              {json.map((event, index) => (
-                <tr key={index}>
-                  <td>{event.date}</td>
-                  <td>{event.event}</td>
-                  <td>{event.location}</td>
-                  <td className="text-center">{event.result}</td>
+          <div className="table-responsive">
+            <table className="table table-bordered table-hover">
+              <thead className="header-row">
+                <tr>
+                  <th>Fecha</th>
+                  <th>Prueba</th>
+                  <th>Lugar</th>
+                  <th className="text-center">Resultado</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody 
+                className={
+                  `table-group-divider 
+                  ${appStateContext?.state.isDarkMode ? "tbody-bg-dark" : ""}`
+                }
+              >
+                {json.map((event, index) => (
+                  <tr key={index}>
+                    <td>{event.date}</td>
+                    <td>{event.event}</td>
+                    <td>{event.location}</td>
+                    <td className="text-center">{event.result}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
