@@ -42,7 +42,7 @@ const CardImg = () => {
 								{/* <br className="d-none d-lg-block" />
 								<br className="d-none d-lg-block" /> */}
 								<h5 className="mt-3 mt-md-none ms-5 fs-2">Dialoga con un deportista con más de 20 años de experiencia en Alto Rendimiento</h5>
-								<h4 className="ms-5 fs-3">¡También graduado en CCAFD y entrenador Nivel 3 de triatlón!</h4>
+								<h4 className="ms-5 fs-3">¡También graduado en CCAFD y entrenador Nivel 2 de triatlón!</h4>
                 <ul className="ms-5 mt-3">
                   <li className="fs-5">Entrenamiento</li>
                   <li className="fs-5">Planificación de carreras</li>
