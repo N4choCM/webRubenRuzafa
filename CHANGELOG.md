@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.1
+
+### Fixes
+
+- 👾 FIXED: Typos in text content
+
 ## 2.0.0
 
 ### Releases
