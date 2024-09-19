@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 2.0.2
+
+### Fixes
+
+- 👾 FIXED: Banner btn animation removed so that it can work
+- ⬆ UPDATED: README.md
+- 👾 FIXED: Emails from contact form arrive now to the correct receiver address 
+
 ## 2.0.1
 
 ### Fixes
