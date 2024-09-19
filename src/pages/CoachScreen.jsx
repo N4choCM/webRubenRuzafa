@@ -1,4 +1,4 @@
-import { Zoom, Fade } from 'react-reveal';
+import { Zoom } from 'react-reveal';
 import Banner from "../components/1-banner/Banner";
 import Divider from "../components/core/divider/Divider";
 import bannerPic1 from "../assets/img/CoachWide.jpg";
@@ -26,9 +26,7 @@ const CoachScreen = () => {
 
 	return (
 		<>
-      <Fade>
-        <Banner images={images} heading1={heading1} heading2={heading2} buttonText={buttonText} buttonLink={"online-training"} />
-      </Fade>
+      <Banner images={images} heading1={heading1} heading2={heading2} buttonText={buttonText} buttonLink={"online-training"} />
       <Zoom>
         <ImgCard />
         <Divider />

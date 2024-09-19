@@ -1,8 +1,42 @@
-# React + Vite
+# 🏊🏼‍♂️🚵🏼‍♂️🏃🏼‍♂️ Rubén Ruzafa Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📋 Project Definition and motivation
 
-Currently, two official plugins are available:
+Rubén Ruzafa Cueto is a former Spanish pro MTB rider and currently pro XTERRA Triathlete.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👨🏼‍💻 Tech Stack
+
+- React
+- EmailJS
+
+## 💻 Run project in local
+
+To run the project, just run the following two command:
+
+```console
+npm i --legacy-peer-deps
+npm run dev
+```
+
+## 🏛 Architecture
+
+### 📂 Most important Folders
+
+# <center>TO BE DEFINED</center>
+
+### 📑 Most Important Files
+
+# <center>TO BE DEFINED</center>
+
+### 🔗 Important URLS
+
+#### 🎨 Frontend 
+
+- [Frontend production URL]() *(https://www.rubenruzafa.com)*
+- [Frontend development URL]() *(TBD)*
+- [Frontend local URL (port 4200)](http://localhost:5173)
+
+## 🔜 Next Steps
+
+- Implement i18n.
+- Implement admin login to be able of edit some functionalities of the web (e.g., the calendar).
