@@ -1,4 +1,4 @@
-import { Zoom, Fade } from 'react-reveal';
+import { Zoom } from 'react-reveal';
 import Banner from "../components/1-banner/Banner";
 import About from "../components/2-about/About";
 import BestResults from "../components/3-best_results/BestResults";
@@ -24,9 +24,7 @@ const ProScreen = () => {
 
   return (
     <>
-      <Fade>
-        <Banner images={images} heading1={heading1} heading2={heading2} buttonText={buttonText} buttonLink={"about"} />
-      </Fade>
+      <Banner images={images} heading1={heading1} heading2={heading2} buttonText={buttonText} buttonLink={"about"} />
       <Zoom>
         <About />
         <Divider />
