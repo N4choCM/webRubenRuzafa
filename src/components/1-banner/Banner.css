@@ -1,75 +1,166 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap");
-
-.container-carousel {
-	position: relative;
-	height: 100vh;
-}
-.container-carousel img {
-	height: 100%;
-	object-position: top;
-}
-
-.carousel-item {
-	height: 100vh;
-}
-
-.overlay {
-	font-family: "Ubuntu Condensed", sans-serif;
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	z-index: 99;
-	background-color: rgba(0, 0, 0, 0.25);
-}
-
-.overlay h1 {
-	font-size: 50px;
-}
-
-.btn-bottom {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.btn-banner-custom {
-  background-color: #e2001a !important;
-	border: 1px solid #fff !important;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.btn-banner-custom:hover {
-	background-color: #b20013 !important;
-}
-
-.btn-banner-custom-coach {
-  background-color: #000 !important;
-	color: #fff !important;
-	border: 1px solid #fff !important;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.btn-banner-custom-coach:hover {
-	background-color: #222 !important;
-}
-
-.carousel-inner {
+.hero {
   position: relative;
-  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
 }
 
-.carousel-item {
+.hero__image {
   position: absolute;
+  inset: 0;
   width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transform: scale(1.02);
 }
 
-.carousel-item.active {
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(105deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.62) 42%, rgba(0, 0, 0, 0.35) 68%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 40%, transparent 30%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+}
+
+.hero__content {
   position: relative;
-  opacity: 1;
+  z-index: 1;
+  padding: 7rem 1rem 6rem;
+  width: 100%;
+}
+
+.hero__text {
+  max-width: 680px;
+}
+
+.hero__badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-brand);
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+
+.hero__badge-line {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.5;
+}
+
+.hero__badge-line--muted {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hero__slogan {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.hero__slogan-line {
+  display: block;
+  font-size: clamp(2.5rem, 6.5vw, 4.75rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.hero__slogan-line--accent {
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.75) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero__scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.5rem;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  animation: hero-scroll-bounce 2.4s ease-in-out infinite;
+}
+
+.hero__scroll:hover .hero__scroll-icon {
+  background: rgba(226, 0, 26, 0.85);
+  border-color: var(--color-brand);
+  color: #fff;
+  animation: none;
+  transform: translateY(2px);
+}
+
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    padding: 6rem 1rem 5.5rem;
+  }
+
+  .hero__badge {
+    max-width: 100%;
+  }
+
+  .hero__badge-line {
+    font-size: 0.65rem;
+  }
+
+  .hero__badge-line--muted {
+    font-size: 0.75rem;
+  }
+
+  .hero__scroll {
+    bottom: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-icon {
+    animation: none;
+  }
 }

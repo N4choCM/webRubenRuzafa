@@ -1,5 +1,5 @@
 import "./Divider.css";
-import { AppStateContext } from "../../../../src/state/AppProvider";
+import { AppStateContext } from '../../../state/AppProvider';
 import { useContext } from "react";
 
 const Divider = () => {

@@ -1,126 +1,96 @@
-import {
-  Home20Regular,
-  WeatherMoon20Regular,
-  WeatherSunny20Regular,
-  BookContacts20Regular,
-  RibbonStar20Regular,
-  CalendarLtr20Regular,
-  ContactCardGroup20Regular,
-  ImageStack20Regular,
-  StarEmphasis20Regular
-} from "@fluentui/react-icons";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-scroll";
-import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/img/logo-transparente.png";
-import { AppStateContext } from "../../../src/state/AppProvider";
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import "./Navbar.css";
-import GroupIcon from '@mui/icons-material/Group';
-import DevicesIcon from '@mui/icons-material/Devices';
-import PhonelinkOffIcon from '@mui/icons-material/PhonelinkOff';
-import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import HelpIcon from '@mui/icons-material/Help';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { Link } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
+import { HiHome, HiUser, HiBriefcase, HiMail, HiMoon, HiSun } from 'react-icons/hi';
+import Logo from '../../assets/img/logo-transparente.png';
+import { AppStateContext } from '../../state/AppProvider';
+import { getCurrentLanguage } from '../../utils/language';
+import { NAV_HEIGHT } from '../../constants/layout';
+import './Navbar.css';
+
+const SECTION_IDS = ['home', 'about', 'services', 'contact'];
 
 const NavBar = () => {
-  const appStateContext = useContext(AppStateContext);
+  const { state, dispatch } = useContext(AppStateContext);
+  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('home');
+  const [currentLang, setCurrentLang] = useState(() => getCurrentLanguage(i18n));
   const navbarCollapseRef = useRef(null);
 
-  const handleDarkModeClick = () => {
-    appStateContext?.dispatch({ type: "TOGGLE_DARK_MODE" });
-    closeMenu();
-  };
-
-  const handleTrainingClick = () => {
-    appStateContext?.dispatch({ type: "TOGGLE_COACH_SCREEN", payload: true });
-    navigate("/training");
-    closeMenu();
-  };
-
-  const handleBackClick = () => {
-    appStateContext?.dispatch({ type: "TOGGLE_COACH_SCREEN", payload: false });
-    navigate("/");
-    closeMenu();
-  };
-
-  const closeMenu = () => {
-    if (navbarCollapseRef.current && navbarCollapseRef.current.classList.contains("show")) {
-      navbarCollapseRef.current.classList.remove("show");
-    }
-  };
+  useEffect(() => {
+    const updateLang = (lng) => setCurrentLang(lng.split('-')[0]);
+    updateLang(i18n.resolvedLanguage || i18n.language || 'es');
+    i18n.on('languageChanged', updateLang);
+    return () => i18n.off('languageChanged', updateLang);
+  }, [i18n]);
 
   useEffect(() => {
-    document.body.classList.remove("app-mode-dark", "app-mode-light");
-    document.body.classList.add(
-      `app-mode-${appStateContext?.state.isDarkMode ? "dark" : "light"}`
-    );
-  }, [appStateContext?.state.isDarkMode]);
+    const getSectionTop = (element) => element.getBoundingClientRect().top + window.scrollY;
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+    const updateActiveSection = () => {
+      const reference = window.scrollY + NAV_HEIGHT + 48;
+      let current = SECTION_IDS[0];
+
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (el && getSectionTop(el) <= reference) {
+          current = id;
+        }
       }
+
+      setActiveSection(current);
     };
 
-    window.addEventListener('scroll', handleScroll);
-
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
     };
   }, []);
 
-  const defaultNavItems = [
-    { to: "home", label: "Inicio", icon: <Home20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "about", label: "Biografía", icon: <BookContacts20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "best-results", label: "Palmarés", icon: <RibbonStar20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "calendar", label: "Calendario", icon: <CalendarLtr20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "gallery", label: "Galería", icon: <ImageStack20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "contact", label: "Contacto", icon: <ContactCardGroup20Regular className="mobile-bigger" />, onClick: closeMenu },
-    { to: "sponsors", label: "Patrocinadores", icon: <StarEmphasis20Regular className="mobile-bigger"/>, onClick: closeMenu },
-    { label: "Training", icon: <FitnessCenterIcon className="mobile-bigger mui-icon me-1"/>, onClick: handleTrainingClick }
-  ];
+  const closeMenu = () => {
+    navbarCollapseRef.current?.classList.remove('show');
+  };
 
-  const coachNavItems = [
-    { label: "Entrenos Online", to: "online-training", icon: <DevicesIcon className="mobile-bigger mui-icon me-1"/>, onClick: closeMenu },
-    { label: "Entrenos Presenciales", to: "in-person-training", icon: <PhonelinkOffIcon className="mobile-bigger mui-icon me-1"/>, onClick: closeMenu},
-    { label: "Charlas", to: "talks", icon: <KeyboardVoiceIcon className="mobile-bigger mui-icon me-1"/>, onClick: closeMenu},
-    { label: "Acompañamiento a Competiciones", to: "competition-support", icon: <GroupIcon className="mobile-bigger mui-icon me-1"/>, onClick: closeMenu},
-    { label: "Otros", to: "contact", icon: <HelpIcon className="mobile-bigger mui-icon me-1"/>, onClick: closeMenu},
-    { label: "", icon: <ArrowBackIcon className="mobile-bigger mui-icon"/>, onClick: handleBackClick }
-  ];
+  const handleDarkModeClick = () => {
+    dispatch({ type: 'TOGGLE_DARK_MODE' });
+    closeMenu();
+  };
 
-  const navItems = appStateContext?.state.isCoachScreen ? coachNavItems : defaultNavItems;
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    closeMenu();
+  };
+
+  useEffect(() => {
+    document.body.classList.remove('app-mode-dark', 'app-mode-light');
+    document.body.classList.add(`app-mode-${state.isDarkMode ? 'dark' : 'light'}`);
+  }, [state.isDarkMode]);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navItems = [
+    { to: 'home', label: t('nav.home'), icon: <HiHome /> },
+    { to: 'about', label: t('nav.about'), icon: <HiUser /> },
+    { to: 'services', label: t('nav.services'), icon: <HiBriefcase /> },
+    { to: 'contact', label: t('nav.contact'), icon: <HiMail /> },
+  ];
 
   return (
     <header className="fixed-top">
-      <nav
-        className={`navbar navbar-expand-lg navbar-dark ${
-          !scrolled ? "navbar-transparent" : scrolled && !appStateContext?.state.isCoachScreen ? "bg-navbar-ruben" : "bg-black"
-        }`}
-      >
+      <nav className={`navbar navbar-expand-lg navbar-dark ${scrolled ? 'navbar--scrolled' : 'navbar--transparent'}`}>
         <div className="container">
-          <Link
-            to="home"
-            smooth={true}
-            duration={200}
-            activeclassname="active"
-            className="navbar-brand custom-pointer"
-          >
-            <div>
-              <img
-                className={"img-logo"}
-                src={Logo}
-                alt="logo"
-              />
-            </div>
+          <Link to="home" smooth duration={500} offset={-NAV_HEIGHT} className="navbar-brand">
+            <img className="navbar-logo" src={Logo} alt="Rubén Ruzafa" />
           </Link>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -130,45 +100,49 @@ const NavBar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon" />
           </button>
+
           <div className="collapse navbar-collapse" id="navbarNav" ref={navbarCollapseRef}>
-            <ul className="navbar-nav ms-auto">
-              {navItems.map((item, index) => (
-                <li key={index} className={`nav-item navbar-hover-custom text-white me-1 navbar-flex ${item.label === "" ? "training-item" : item.label === "Training" ? "training-item" : ""}`}>
-                  {item.to ? (
-                    <Link
-                      to={item.to}
-                      smooth={true}
-                      duration={200}
-                      activeclassname="active"
-                      className="nav-link custom-pointer"
-                      onClick={item.onClick}
-                    >
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </Link>
-                  ) : (
-                    <div
-                      onClick={item.onClick}
-                      className="nav-link custom-pointer"
-                    >
-                      {item.icon}
-                      <span>{item.label}</span>
-                    </div>
-                  )}
+            <ul className="navbar-nav ms-auto align-items-lg-center">
+              {navItems.map((item) => (
+                <li key={item.to} className="nav-item">
+                  <Link
+                    to={item.to}
+                    smooth
+                    duration={500}
+                    offset={-NAV_HEIGHT}
+                    className={`nav-link${activeSection === item.to ? ' active' : ''}`}
+                    onClick={closeMenu}
+                  >
+                    <span className="nav-link__icon">{item.icon}</span>
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
-            <div className="d-flex navbar-hover-custom navbar-flex">
-              <button 
-                className="btn"
-                onClick={handleDarkModeClick}
-              >
-                {appStateContext?.state.isDarkMode 
-                  ? <WeatherSunny20Regular className="text-light mobile-bigger-dark-mode" /> 
-                  : <WeatherMoon20Regular className="text-light mobile-bigger-dark-mode"/>
-                }
+
+            <div className="navbar-actions">
+              <div className="lang-switcher" role="group" aria-label="Language">
+                <button
+                  type="button"
+                  className={`lang-switcher__btn ${currentLang === 'es' ? 'lang-switcher__btn--active' : ''}`}
+                  onClick={() => changeLanguage('es')}
+                  aria-pressed={currentLang === 'es'}
+                >
+                  ES
+                </button>
+                <button
+                  type="button"
+                  className={`lang-switcher__btn ${currentLang === 'en' ? 'lang-switcher__btn--active' : ''}`}
+                  onClick={() => changeLanguage('en')}
+                  aria-pressed={currentLang === 'en'}
+                >
+                  EN
+                </button>
+              </div>
+              <button type="button" className="navbar-theme-btn" onClick={handleDarkModeClick} aria-label="Toggle theme">
+                {state.isDarkMode ? <HiSun /> : <HiMoon />}
               </button>
             </div>
           </div>

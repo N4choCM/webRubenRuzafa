@@ -1,0 +1,28 @@
+.services-section {
+  background: var(--color-bg-alt);
+  padding-bottom: 0;
+}
+
+.services-section .section-header {
+  margin-bottom: 2rem;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.services-list .service-block:first-child {
+  padding-top: 0;
+}
+
+.services-list .service-block:last-child {
+  padding-bottom: 3.5rem;
+}
+
+@media (max-width: 575px) {
+  .services-list .service-block:last-child {
+    padding-bottom: 2rem;
+  }
+}

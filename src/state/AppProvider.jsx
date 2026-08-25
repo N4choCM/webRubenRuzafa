@@ -1,20 +1,10 @@
-import React, { createContext, useReducer } from "react";
-import { appStateReducer } from "./AppReducer";
+import { createContext, useReducer } from 'react';
+import { appStateReducer } from './AppReducer';
+import { initialState } from './constants';
 
 export const AppStateContext = createContext();
 
-export const initialState = {
-  isDarkMode: false,
-  isLoggedIn: false,
-  isCoachScreen: false,
-};
-
-export const Action = {
-  TOGGLE_DARK_MODE: "TOGGLE_DARK_MODE",
-  LOGIN: "LOGIN",
-  TOGGLE_COACH_SCREEN: "TOGGLE_COACH_SCREEN",
-};
-
+/* eslint-disable react/prop-types */
 export const AppStateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appStateReducer, initialState);
 

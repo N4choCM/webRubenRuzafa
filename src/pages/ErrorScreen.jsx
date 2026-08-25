@@ -1,9 +1,16 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ErrorScreen = () => {
-  return (
-    <div>ErrorScreen</div>
-  )
-}
+  const { t } = useTranslation();
 
-export default ErrorScreen
+  return (
+    <div className="container error-page">
+      <h1>{t('error.title')}</h1>
+      <p>{t('error.message')}</p>
+      <Link to="/" className="btn btn-brand">{t('error.back')}</Link>
+    </div>
+  );
+};
+
+export default ErrorScreen;
