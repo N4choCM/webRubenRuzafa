@@ -22,25 +22,4 @@ i18n
     },
   });
 
-const updateMetaDescription = () => {
-  const description = i18n.t('meta.description');
-  let meta = document.querySelector('meta[name="description"]');
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.name = 'description';
-    document.head.appendChild(meta);
-  }
-  meta.content = description;
-};
-
-i18n.on('languageChanged', (lng) => {
-  document.documentElement.lang = lng.split('-')[0];
-  document.title = i18n.t('meta.title');
-  updateMetaDescription();
-});
-
-document.documentElement.lang = (i18n.language || 'es').split('-')[0];
-document.title = i18n.t('meta.title');
-updateMetaDescription();
-
 export default i18n;
