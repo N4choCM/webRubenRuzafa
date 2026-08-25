@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "Rubén Ruzafa | Personal Trainer",
+    "description": "Rubén Ruzafa — Personal trainer and triathlon coach. Former XTERRA & ITU World Champion. Online and in-person training."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slogan": "Champion experience.\nYour next level.",
+    "subtitle": {
+      "champion": "Former XTERRA & ITU World Champion",
+      "experience": "Over 20 years of elite sport"
+    },
+    "scroll": "Scroll"
+  },
+  "about": {
+    "title": "About me",
+    "eyebrow": "Coach · Former elite athlete",
+    "now": {
+      "title": "Who I am today",
+      "paragraphs": [
+        "After a long career as an elite athlete, I now dedicate myself fully to personal training and supporting athletes of all levels.",
+        "I hold a Bachelor's degree in Physical Activity and Sports Sciences and am a Level 2 triathlon coach. I combine over two decades of top-level competition with academic training to design personalized plans.",
+        "My goal is to help you reach your targets: improve performance, prepare for a race, or train smarter."
+      ]
+    },
+    "career": {
+      "title": "Sporting career",
+      "paragraphs": [
+        "Competing in mountain bike from age 12, I rode for the BH-Sierra Nevada and the Orbea Racing Team. In 2008 I became XTERRA World Champion in Maui. From 2013 I specialized in cross triathlon and XTERRA, winning world and European titles until retiring from professional competition.",
+        "Today I channel all that experience into coaching, helping others perform at their best with the same rigor I applied to my own career."
+      ]
+    },
+    "highlights": {
+      "title": "Career highlights",
+      "items": [
+        { "value": "3×", "label": "XTERRA World Champion" },
+        { "value": "4×", "label": "ITU Cross Triathlon World Champion" },
+        { "value": "3×", "label": "Spanish MTB XCO Champion" },
+        { "value": "20+", "label": "Years in elite sport" }
+      ]
+    }
+  },
+  "services": {
+    "title": "Services",
+    "eyebrow": "How I can help",
+    "online": {
+      "title": "Online Training",
+      "includes": "What's included:",
+      "plansTitle": "Online training plans",
+      "items": [
+        "TrainingPeaks training platform",
+        "Goal and challenge setting",
+        "Sessions tailored to each individual",
+        "Training zone establishment"
+      ],
+      "plans": {
+        "monthly": {
+          "title": "Monthly",
+          "tier": "Basic",
+          "items": [
+            "Contact twice a month",
+            "Goal setting",
+            "Monthly training aligned with objectives"
+          ]
+        },
+        "weekly": {
+          "title": "Weekly",
+          "tier": "Standard",
+          "items": [
+            "Weekly contact",
+            "Goal setting",
+            "Review of completed week",
+            "Planning for the following week"
+          ]
+        },
+        "premium": {
+          "title": "Weekly Premium",
+          "tier": "Premium",
+          "items": [
+            "On-demand contact",
+            "Goal setting",
+            "Weekly review and planning",
+            "Daily questions and schedule adjustments"
+          ]
+        }
+      }
+    },
+    "inPerson": {
+      "title": "In-Person Training",
+      "heading": "In-person sessions, tailored to your level and goals",
+      "includes": "Available activities:",
+      "individual": "Individual",
+      "individualNote": "One-on-one attention, session by session.",
+      "group": "Group",
+      "groupNote": "Group dynamics to stay motivated and progress together.",
+      "items": [
+        "Pool swimming",
+        "Open water",
+        "Road cycling",
+        "Mountain biking",
+        "Running",
+        "Trail running",
+        "Strength sessions"
+      ]
+    },
+    "talks": {
+      "title": "Talks",
+      "heading": "Talk with an athlete with over 20 years of elite sports experience",
+      "subtitle": "Physical Activity and Sports Sciences graduate and Level 2 triathlon coach",
+      "items": [
+        "Training",
+        "Race planning",
+        "Cross triathlon and XTERRA insights",
+        "Other topics (on request)"
+      ]
+    },
+    "competition": {
+      "title": "Race Day Support",
+      "heading": "On race day, having a professional triathlete by your side can make a real difference.",
+      "items": [
+        "Course reconnaissance",
+        "Technical section practice",
+        "Management tips",
+        "Race strategy",
+        "Equipment selection"
+      ]
+    }
+  },
+  "career": {
+    "title": "Career highlights",
+    "2022": {
+      "year": "2022",
+      "achievements": [
+        "European Cross Triathlon Champion, Bermeo",
+        "3rd XTERRA World Championship, Molveno",
+        "3rd XTERRA European Championship, Prachatice",
+        "5th ITU Cross Triathlon World Championship, Targu Mures",
+        "3rd XTERRA Nouvelle-Aquitaine"
+      ]
+    },
+    "2021": {
+      "year": "2021",
+      "achievements": [
+        "3rd XTERRA World Championship, Maui",
+        "3rd ITU Cross Triathlon World Championship, El Anillo",
+        "2nd XTERRA Nouvelle-Aquitaine",
+        "5th European Cross Triathlon Championship, Molveno"
+      ]
+    },
+    "general": {
+      "title": "Overall",
+      "achievements": [
+        "XTERRA World Champion (2008, 2013, 2014)",
+        "ITU Cross Triathlon World Champion (2014, 2015, 2016, 2018)",
+        "ITU Cross Triathlon World Vice-Champion (2013, 2017, 2019)",
+        "European Cross Triathlon Champion (2016, 2019, 2022)",
+        "XTERRA European Champion (2015, 2016)",
+        "9 XTERRA World Championship podiums",
+        "8 ITU Cross Triathlon World Championship podiums (2013-2021)"
+      ]
+    },
+    "mtb": {
+      "title": "Mountain Bike",
+      "achievements": [
+        "2nd MTB XCO World Cup, Albstad (2009)",
+        "Spanish MTB XCO Champion (2005, 2006, 2008)",
+        "Team Relay World Champion (2005)"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "eyebrow": "Let's talk",
+    "subtitle": "Have a question or ready to start training? Get in touch.",
+    "lead": "Tell me your goal and I'll get back to you soon.",
+    "points": [
+      "Online and in-person training",
+      "Plans tailored to your level",
+      "Over 20 years of elite experience"
+    ],
+    "whatsapp": "Message me on WhatsApp",
+    "whatsappMessage": "Hi Rubén, I'd like to get information about your training services.",
+    "form": {
+      "name": "Name",
+      "email": "Email address",
+      "message": "Hi Rubén, I'm writing to...",
+      "submit": "Send message"
+    },
+    "social": "Follow me",
+    "alerts": {
+      "validation": "Please fill in all fields before sending.",
+      "success": "Message sent successfully!",
+      "error": "Could not send the message. Please try again."
+    }
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "legal": "Legal Notice",
+    "sponsors": "Partners",
+    "copyright": "© Rubén Ruzafa Cueto"
+  },
+  "chat": {
+    "title": "Rubén's Assistant",
+    "subtitle": "Ask about training and services",
+    "welcome": "Hi! I'm Rubén Ruzafa's assistant. I can help with information about his training services, sporting career, and how to get in touch. How can I help?",
+    "placeholder": "Type your question...",
+    "send": "Send",
+    "open": "Open chat",
+    "close": "Close chat",
+    "error": "Sorry, I couldn't respond. Please try again or contact Rubén directly."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: August 23, 2026",
+      "sections": [
+        "Rubén Ruzafa is committed to protecting and respecting your privacy. This policy describes how we collect, use, and share personally identifiable information through our website www.rubenruzafa.com and www.rubenruzafa.es.",
+        "We collect personally identifiable information when you complete contact forms or interact with our site. Information may include full name and email address.",
+        "We use the information to respond to your inquiries, improve our services, and comply with applicable legal obligations.",
+        "We do not sell or share your personal information with unaffiliated third parties, except as described in this policy or with your express consent.",
+        "We implement reasonable security measures to protect personal information. However, no Internet transmission is completely secure.",
+        "You have the right to access, correct, or delete your personal information. To exercise these rights, contact us through the contact form.",
+        "We may update this policy periodically. We recommend reviewing this page regularly."
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "sections": [
+        "We use cookies and similar technologies to improve your experience on our website. By continuing to browse, you accept their use.",
+        "A cookie is a small text file stored on your device. We use cookies to remember preferences such as language and dark mode.",
+        "You can configure your browser to reject cookies, although some site features may not work correctly.",
+        "By using our website, you accept the use of cookies in accordance with this policy."
+      ]
+    },
+    "legalNotice": {
+      "title": "Legal Notice",
+      "sections": [
+        "This website is owned by Rubén Ruzafa Cueto, based in Spain.",
+        "Access to this website and use of the information it contains are subject to applicable Spanish legislation.",
+        "The information provided on this website is for general informational purposes only. We strive to keep information up to date and accurate, but make no warranties regarding its completeness or accuracy.",
+        "In no event shall we be liable for any loss or damage arising from the use of this website.",
+        "This website may link to other websites not under our control. The inclusion of any link does not necessarily imply a recommendation."
+      ]
+    }
+  },
+  "error": {
+    "title": "Page not found",
+    "message": "The page you're looking for doesn't exist.",
+    "back": "Back to home"
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "Rubén Ruzafa | Entrenador Personal",
+    "description": "Rubén Ruzafa — Entrenador personal y de triatlón. Ex campeón de XTERRA e ITU. Entrenamientos online y presenciales."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "services": "Servicios",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "slogan": "Experiencia de campeón.\nTu próximo nivel.",
+    "subtitle": {
+      "champion": "Campeón de XTERRA e ITU",
+      "experience": "Más de 20 años en alto rendimiento"
+    },
+    "scroll": "Ver más"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "eyebrow": "Entrenador · Exatleta de élite",
+    "now": {
+      "title": "Quién soy ahora",
+      "paragraphs": [
+        "Tras una larga carrera como deportista de élite, me dedico por completo al entrenamiento personal y al acompañamiento de atletas de todos los niveles.",
+        "Soy graduado en Ciencias de la Actividad Física y el Deporte (CCAFD) y entrenador Nivel 2 de triatlón. Combino más de dos décadas compitiendo al más alto nivel con formación académica para diseñar planes personalizados.",
+        "Mi objetivo es ayudarte a alcanzar tus metas: mejorar rendimiento, preparar una competición o entrenar de forma más inteligente."
+      ]
+    },
+    "career": {
+      "title": "Trayectoria deportiva",
+      "paragraphs": [
+        "Desde los 12 años compitiendo en mountain bike, pasé por equipos como el BH-Sierra Nevada y el Orbea Racing Team. En 2008 me proclamé Campeón del Mundo de XTERRA en Maui. Desde 2013 me especialicé en triatlón cross y XTERRA, acumulando títulos mundiales y europeos hasta mi retirada de la competición profesional.",
+        "Hoy canalizo toda esa experiencia en el entrenamiento personal, ayudando a otros a sacar lo mejor de sí mismos con el mismo rigor que aplicaba en mi propia carrera."
+      ]
+    },
+    "highlights": {
+      "title": "Palmarés destacado",
+      "items": [
+        { "value": "3×", "label": "Campeón del Mundo XTERRA" },
+        { "value": "4×", "label": "Campeón del Mundo Triatlón Cross ITU" },
+        { "value": "3×", "label": "Campeón de España MTB XCO" },
+        { "value": "20+", "label": "Años en alto rendimiento" }
+      ]
+    }
+  },
+  "services": {
+    "title": "Servicios",
+    "eyebrow": "Cómo puedo ayudarte",
+    "online": {
+      "title": "Entrenamientos Online",
+      "includes": "Servicios incluidos:",
+      "plansTitle": "Planes de entrenamiento online",
+      "items": [
+        "Plataforma de entrenamientos TrainingPeaks",
+        "Establecimiento de objetivos y retos",
+        "Adecuación de sesiones a cada caso particular",
+        "Establecimiento de zonas de entrenamiento"
+      ],
+      "plans": {
+        "monthly": {
+          "title": "Mensuales",
+          "tier": "Básico",
+          "items": [
+            "Contacto dos veces al mes",
+            "Establecimiento de objetivos",
+            "Entrenamiento mensual acorde con los objetivos"
+          ]
+        },
+        "weekly": {
+          "title": "Semanales",
+          "tier": "Estándar",
+          "items": [
+            "Un contacto semanal",
+            "Establecimiento de objetivos",
+            "Evaluación de la semana completada",
+            "Planificación de la semana siguiente"
+          ]
+        },
+        "premium": {
+          "title": "Semanal Premium",
+          "tier": "Premium",
+          "items": [
+            "Contacto a demanda",
+            "Establecimiento de objetivos",
+            "Evaluación y planificación semanal",
+            "Disposición para dudas diarias y cambios"
+          ]
+        }
+      }
+    },
+    "inPerson": {
+      "title": "Entrenamientos Presenciales",
+      "heading": "Sesiones presenciales, adaptadas a tu nivel y objetivos",
+      "includes": "Actividades disponibles:",
+      "individual": "Individuales",
+      "individualNote": "Atención personalizada, sesión a sesión.",
+      "group": "Grupales",
+      "groupNote": "Dinámica de grupo para motivarte y progresar juntos.",
+      "items": [
+        "Natación en piscina",
+        "Aguas abiertas",
+        "Ciclismo de carretera",
+        "BTT",
+        "Running",
+        "Trail running",
+        "Sesiones de fuerza"
+      ]
+    },
+    "talks": {
+      "title": "Charlas",
+      "heading": "Dialoga con un deportista con más de 20 años de experiencia en alto rendimiento",
+      "subtitle": "Graduado en Ciencias de la Actividad Física y el Deporte y entrenador Nivel 2 de triatlón",
+      "items": [
+        "Entrenamiento",
+        "Planificación de carreras",
+        "Secretos del triatlón cross y XTERRA",
+        "Otros (a consultar)"
+      ]
+    },
+    "competition": {
+      "title": "Acompañamiento a competiciones",
+      "heading": "El día D, estar acompañado por un triatleta profesional puede marcar la diferencia en tu rendimiento.",
+      "items": [
+        "Reconocimiento de circuitos",
+        "Práctica de zonas técnicas",
+        "Consejos de gestión",
+        "Estrategia de carrera",
+        "Elección del material"
+      ]
+    }
+  },
+  "career": {
+    "title": "Logros de carrera",
+    "2022": {
+      "year": "2022",
+      "achievements": [
+        "Campeón de Europa Triatlón Cross, Bermeo",
+        "3º Campeonato del Mundo XTERRA, Molveno",
+        "3º Campeonato de Europa XTERRA, Prachatice",
+        "5º Campeonato del Mundo Triatlón Cross ITU, Targu Mures",
+        "3º XTERRA Nouvelle-Aquitaine"
+      ]
+    },
+    "2021": {
+      "year": "2021",
+      "achievements": [
+        "3º Campeonato del Mundo XTERRA, Maui",
+        "3º Campeonato del Mundo Triatlón Cross ITU, El Anillo",
+        "2º XTERRA Nouvelle-Aquitaine",
+        "5º Campeonato de Europa Triatlón Cross, Molveno"
+      ]
+    },
+    "general": {
+      "title": "General",
+      "achievements": [
+        "Campeón del Mundo de XTERRA (2008, 2013, 2014)",
+        "Campeón del Mundo de Triatlón Cross (2014, 2015, 2016, 2018)",
+        "Subcampeón del Mundo de Triatlón Cross (2013, 2017, 2019)",
+        "Campeón de Europa de Triatlón Cross (2016, 2019, 2022)",
+        "Campeón de Europa de XTERRA (2015, 2016)",
+        "9 podios en Campeonatos del Mundo de XTERRA",
+        "8 podios en Campeonatos del Mundo de Triatlón Cross (2013-2021)"
+      ]
+    },
+    "mtb": {
+      "title": "Mountain Bike",
+      "achievements": [
+        "2º Copa del Mundo de MTB XCO, Albstad (2009)",
+        "Campeón de España de MTB XCO (2005, 2006, 2008)",
+        "Campeón del Mundo de Team Relay (2005)"
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "eyebrow": "Hablemos",
+    "subtitle": "¿Tienes alguna pregunta o quieres empezar a entrenar? Escríbeme.",
+    "lead": "Cuéntame tu objetivo y te responderé lo antes posible.",
+    "points": [
+      "Entrenamientos online y presenciales",
+      "Planificación adaptada a tu nivel",
+      "Más de 20 años de experiencia en élite"
+    ],
+    "whatsapp": "Escríbeme por WhatsApp",
+    "whatsappMessage": "Hola Rubén, me gustaría solicitar información sobre tus servicios de entrenamiento.",
+    "form": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "message": "Hola Rubén, te escribo para...",
+      "submit": "Enviar mensaje"
+    },
+    "social": "Sígueme en redes",
+    "alerts": {
+      "validation": "Por favor, complete todos los campos antes de enviar.",
+      "success": "¡Mensaje enviado correctamente!",
+      "error": "No se pudo enviar el mensaje. Inténtalo de nuevo."
+    }
+  },
+  "footer": {
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies",
+    "legal": "Aviso legal",
+    "sponsors": "Colaboradores",
+    "copyright": "© Rubén Ruzafa Cueto"
+  },
+  "chat": {
+    "title": "Asistente de Rubén",
+    "subtitle": "Pregúntame sobre entrenamientos y servicios",
+    "welcome": "¡Hola! Soy el asistente de Rubén Ruzafa. Puedo ayudarte con información sobre sus servicios de entrenamiento, su trayectoria deportiva y cómo contactarle. ¿En qué puedo ayudarte?",
+    "placeholder": "Escribe tu pregunta...",
+    "send": "Enviar",
+    "open": "Abrir chat",
+    "close": "Cerrar chat",
+    "error": "Lo siento, no he podido responder. Inténtalo de nuevo o contacta directamente con Rubén."
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de Privacidad",
+      "updated": "Última actualización: 23/08/2026",
+      "sections": [
+        "Rubén Ruzafa se compromete a proteger y respetar tu privacidad. Esta política describe cómo recopilamos, utilizamos y compartimos la información personal identificable que recabamos a través de nuestro sitio web www.rubenruzafa.com y www.rubenruzafa.es.",
+        "Recopilamos información personal identificable cuando completas formularios de contacto o interactúas con nuestro sitio. La información puede incluir nombre completo y dirección de correo electrónico.",
+        "Utilizamos la información para responder a tus consultas, mejorar nuestros servicios y cumplir con obligaciones legales aplicables.",
+        "No vendemos ni compartimos tu información personal con terceros no afiliados, excepto como se describe en esta política o con tu consentimiento expreso.",
+        "Implementamos medidas de seguridad razonables para proteger la información personal. Sin embargo, ninguna transmisión por Internet es completamente segura.",
+        "Tienes derecho a acceder, corregir o eliminar tu información personal. Para ejercer estos derechos, contáctanos a través del formulario de contacto.",
+        "Podemos actualizar esta política periódicamente. Te recomendamos revisar esta página con regularidad."
+      ]
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "sections": [
+        "Utilizamos cookies y tecnologías similares para mejorar tu experiencia en nuestro sitio web. Al continuar navegando, aceptas su uso.",
+        "Una cookie es un pequeño archivo de texto almacenado en tu dispositivo. Utilizamos cookies para recordar preferencias como el idioma y el modo oscuro.",
+        "Puedes configurar tu navegador para rechazar cookies, aunque algunas funciones del sitio podrían no funcionar correctamente.",
+        "Al utilizar nuestro sitio web, aceptas el uso de cookies de acuerdo con esta política."
+      ]
+    },
+    "legalNotice": {
+      "title": "Aviso Legal",
+      "sections": [
+        "Este sitio web es propiedad de Rubén Ruzafa Cueto, con domicilio en España.",
+        "El acceso a este sitio web y el uso de la información que contiene están sujetos a la legislación aplicable en España.",
+        "La información proporcionada en este sitio web es solo para fines informativos generales. Nos esforzamos por mantener la información actualizada y precisa, pero no ofrecemos garantías sobre su integridad o exactitud.",
+        "En ningún caso seremos responsables por pérdidas o daños derivados del uso de este sitio web.",
+        "A través de este sitio web puedes enlazar con otros sitios web que no están bajo nuestro control. La inclusión de cualquier enlace no implica necesariamente una recomendación."
+      ]
+    }
+  },
+  "error": {
+    "title": "Página no encontrada",
+    "message": "La página que buscas no existe.",
+    "back": "Volver al inicio"
+  }
+}

@@ -1,24 +1,22 @@
-import { initializeIcons } from "@fluentui/react";
-import { BrowserRouter } from "react-router-dom";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle";
-import "./App.css";
-import "./index.css";
-
-import MainRoutes from "./routes/MainRoutes";
-import { AppStateProvider } from "./state/AppProvider";
-
-initializeIcons();
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AppStateProvider } from './state/AppProvider';
+import MainRoutes from './routes/MainRoutes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './App.css';
 
 function App() {
-	return (
-		<AppStateProvider>
-			<BrowserRouter>
-				<MainRoutes />
-			</BrowserRouter>
-		</AppStateProvider>
-	);
+  return (
+    <AppStateProvider>
+      <Router>
+        <div className="app">
+          <main>
+            <MainRoutes />
+          </main>
+        </div>
+      </Router>
+    </AppStateProvider>
+  );
 }
 
 export default App;

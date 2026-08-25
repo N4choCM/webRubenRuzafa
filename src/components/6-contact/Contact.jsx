@@ -1,132 +1,120 @@
-import "./Contact.css";
+import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
-import { useRef, useState, useContext } from 'react';
-import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close'; // Importa CloseIcon
-import { AppStateContext } from '../../state/AppProvider';
+import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { HiCheck } from 'react-icons/hi';
+import { buildWhatsAppUrl, CONTACT_EMAIL, SOCIAL_LINKS, WHATSAPP_PHONE } from '../../constants/contact';
+import SectionHeader from '../core/SectionHeader';
+import './Contact.css';
 
 const Contact = () => {
-  const appStateContext = useContext(AppStateContext);
+  const { t } = useTranslation();
   const form = useRef();
   const [alert, setAlert] = useState({ show: false, type: '', message: '' });
+
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  const whatsappUrl = buildWhatsAppUrl(WHATSAPP_PHONE, t('contact.whatsappMessage'));
+  const points = t('contact.points', { returnObjects: true });
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     if (!form.current.checkValidity()) {
-      setAlert({
-        show: true,
-        type: 'error',
-        message: 'Por favor, complete todos los campos antes de enviar el mensaje.',
-      });
+      setAlert({ show: true, type: 'error', message: t('contact.alerts.validation') });
       return;
     }
 
-    emailjs
-      .sendForm(
-        'service_vcksz6s',
-        'template_kzy0men',
-        form.current,
-        'Bfwqi2sxD8k6UGO6W'
-      )
-      .then(
-        () => {
-          setAlert({
-            show: true,
-            type: 'success',
-            message: '¡Email enviado correctamente!',
-          });
-          form.current.reset();
+    if (!serviceId || !templateId || !publicKey) {
+      setAlert({ show: true, type: 'error', message: t('contact.alerts.error') });
+      return;
+    }
 
-          setTimeout(() => {
-            setAlert({ show: false, type: '', message: '' });
-          }, 5000);
-        },
-        (error) => {
-          setAlert({
-            show: true,
-            type: 'error',
-            message: 'Email no enviado. Por favor, inténtelo de nuevo.',
-          });
-          console.log('FAILED...', error.text);
-
-          setTimeout(() => {
-            setAlert({ show: false, type: '', message: '' });
-          }, 5000);
-        }
-      );
+    emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
+      () => {
+        setAlert({ show: true, type: 'success', message: t('contact.alerts.success') });
+        form.current.reset();
+        setTimeout(() => setAlert({ show: false, type: '', message: '' }), 5000);
+      },
+      () => {
+        setAlert({ show: true, type: 'error', message: t('contact.alerts.error') });
+        setTimeout(() => setAlert({ show: false, type: '', message: '' }), 5000);
+      }
+    );
   };
 
   return (
-    <div
-      id="contact"
-      className="carousel slide carousel-fade anchor"
-      data-bs-ride="carousel"
-    >
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col text-uppercase text-center pt-4">
-            <h3>Contacto</h3>
-            <br />
-          </div>
-        </div>
+    <section id="contact" className="anchor contact-section">
+      <div className="container">
+        <SectionHeader
+          eyebrow={t('contact.eyebrow')}
+          title={t('contact.title')}
+          subtitle={t('contact.subtitle')}
+        />
+
         {alert.show && (
-          <div className="alert-container">
-            <Alert
-              icon={alert.type === 'success' ? <CheckIcon fontSize="inherit" /> : <CloseIcon fontSize="inherit" />}
-              severity={alert.type}
-              onClose={() => setAlert({ show: false, type: '', message: '' })}
-            >
-              {alert.message}
-            </Alert>
+          <div className={`contact-alert contact-alert--${alert.type}`} role="alert">
+            {alert.message}
+            <button type="button" className="contact-alert__close" onClick={() => setAlert({ show: false, type: '', message: '' })} aria-label="Close">×</button>
           </div>
         )}
-        <form
-          className="row needs-validation mx-auto"
-          noValidate
-          ref={form}
-          onSubmit={sendEmail}
-        >
-          <div className="col-10 col-md-8 offset-1 offset-md-2">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Nombre"
-              required
-              name="name"
-            />
+
+        <div className="contact-panel">
+          <aside className="contact-panel__info">
+            <p className="contact-panel__lead">{t('contact.lead')}</p>
+
+            <ul className="contact-panel__points">
+              {points.map((point, i) => (
+                <li key={i}>
+                  <HiCheck aria-hidden />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact-whatsapp">
+              <FaWhatsapp className="contact-whatsapp__icon" />
+              <span>{t('contact.whatsapp')}</span>
+            </a>
+
+            <div className="contact-social">
+              <p className="contact-social__label">{t('contact.social')}</p>
+              <div className="contact-social__links">
+                <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+                <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebook /></a>
+                <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" aria-label="X"><FaXTwitter /></a>
+              </div>
+            </div>
+          </aside>
+
+          <div className="contact-panel__form">
+            <form className="contact-form" ref={form} onSubmit={sendEmail} noValidate>
+              <input type="hidden" name="to_email" value={CONTACT_EMAIL} />
+              <div className="contact-form__row">
+                <div className="contact-field">
+                  <label htmlFor="contact-name">{t('contact.form.name')}</label>
+                  <input id="contact-name" type="text" required name="name" />
+                </div>
+                <div className="contact-field">
+                  <label htmlFor="contact-email">{t('contact.form.email')}</label>
+                  <input id="contact-email" type="email" required name="email" />
+                </div>
+              </div>
+              <div className="contact-field">
+                <label htmlFor="contact-message">{t('contact.form.message')}</label>
+                <textarea id="contact-message" rows="4" required name="message" />
+              </div>
+              <button className="btn btn-brand contact-submit" type="submit">
+                {t('contact.form.submit')}
+              </button>
+            </form>
           </div>
-          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3">
-            <input
-              type="email"
-              className="form-control"
-              placeholder="example@example.com"
-              required
-              name="email"
-            />
-          </div>
-          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3">
-            <textarea
-              className="form-control"
-              rows="5"
-              placeholder="Hola, Rubén, te escribo para..."
-              required
-              name="message"
-            />
-          </div>
-          <div className="col-10 col-md-8 offset-1 offset-md-2 mt-3 d-grid pb-5">
-            <button
-              className={`btn bg-${appStateContext?.state.isCoachScreen && appStateContext?.state.isDarkMode ? "contact-black" : appStateContext?.state.isCoachScreen && !appStateContext?.state.isDarkMode ? "contact-black" : "red-ruben"} text-white`}
-              type="submit"
-              value="Send"
-            >
-              Enviar
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

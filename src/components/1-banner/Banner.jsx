@@ -1,62 +1,55 @@
-/* eslint-disable react/prop-types */
-import { Link } from "react-scroll";
-import { useEffect, useState, useContext } from "react";
-import "./Banner.css";
-import { AppStateContext } from "../../state/AppProvider";
+import { Link } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
+import { HiChevronDown } from 'react-icons/hi';
+import heroImage from '../../assets/img/coach-hero.webp';
+import { NAV_HEIGHT } from '../../constants/layout';
+import './Banner.css';
 
-const Banner = ({ images, heading1, heading2, buttonText, buttonLink }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const appStateContext = useContext(AppStateContext);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 7500);
-    return () => clearInterval(interval);
-  }, [images.length]);
+const Banner = () => {
+  const { t } = useTranslation();
+  const sloganLines = t('hero.slogan').split('\n');
 
   return (
-    <div
-      id="home"
-      className="carousel slide carousel-fade"
-      data-bs-ride="carousel"
-    >
-      <div className="carousel-inner">
-        {images.map((image, index) => (
-          <div
-            className={`carousel-item ${index === currentImageIndex ? "active" : ""}`}
-            key={index}
-          >
-            <img
-              src={image}
-              className="w-100 h-100 img-cover"
-              alt={`Slide ${index + 1}`}
-            />
+    <section id="home" className="hero">
+      <img
+        src={heroImage}
+        className="hero__image"
+        alt="Rubén Ruzafa"
+        fetchPriority="high"
+        decoding="async"
+      />
+      <div className="hero__overlay" />
+      <div className="hero__vignette" aria-hidden />
+
+      <div className="hero__content container">
+        <div className="hero__text">
+          <div className="hero__badge">
+            <span className="hero__badge-line">{t('hero.subtitle.champion')}</span>
+            <span className="hero__badge-line hero__badge-line--muted">{t('hero.subtitle.experience')}</span>
           </div>
-        ))}
-      </div>
-      <div className="overlay">
-        <div className="container h-100">
-          <div className="row h-100 align-items-center">
-            <div className="col-12 col-md-8 col-lg-6 text-md-start text-center">
-              <h1 className="d-none d-md-block text-white fw-bolder">
-                {heading1}
-              </h1>
-              <h1 className="d-none d-md-block text-white fw-bolder">
-                {heading2}
-              </h1>
-            </div>
-          </div>
-        </div>
-        <div className="d-flex flex-column align-items-center justify-content-center text-white p-3">
-          <Link to={buttonLink} smooth={true} duration={200}>
-            <button className={`btn btn-bottom btn-banner-custom${appStateContext?.state.isCoachScreen ? "-coach" : ""} text-white px-3 py-2`}>
-              {buttonText}
-            </button>
-          </Link>
+          <h1 className="hero__slogan">
+            {sloganLines.map((line, i) => (
+              <span key={i} className={i === 1 ? 'hero__slogan-line hero__slogan-line--accent' : 'hero__slogan-line'}>
+                {line}
+              </span>
+            ))}
+          </h1>
         </div>
       </div>
-    </div>
+
+      <Link
+        to="about"
+        smooth
+        duration={600}
+        offset={-NAV_HEIGHT}
+        className="hero__scroll"
+        aria-label={t('hero.scroll')}
+      >
+        <span className="hero__scroll-icon">
+          <HiChevronDown />
+        </span>
+      </Link>
+    </section>
   );
 };
 

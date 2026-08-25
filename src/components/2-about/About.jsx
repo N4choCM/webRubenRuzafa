@@ -1,103 +1,63 @@
-import Run from "../../assets/img/running_biography.jpg";
-import Swim from "../../assets/img/swimming_biography.jpg";
-import json from "../../assets/text/about.json";
-import "./About.css";
-import { AppStateContext } from "../../../src/state/AppProvider";
-import { useContext } from "react";
+import { useTranslation } from 'react-i18next';
+import Run from '../../assets/img/running_biography.webp';
+import Swim from '../../assets/img/swimming_biography.webp';
+import SectionHeader from '../core/SectionHeader';
+import './About.css';
 
 const About = () => {
-	const appStateContext = useContext(AppStateContext);
+  const { t } = useTranslation();
 
-	return (
-		<div
-			id="about"
-			className="carousel slide carousel-fade anchor"
-			data-bs-ride="carousel"
-		>
-			<div className="container">
-				<div className="row my-4">
-					<div className="col text-center text-uppercase">
-						<h3>{json.paragraphs[0]}</h3>
-					</div>
-				</div>
-				<div className="row row-cols-1 row-cols-md-2 g-4">
-					<div className="col col-md-6 col-lg-4 d-none d-md-block g-4">
-						<div className="card h-100">
-							<img
-								src={Swim}
-								className={
-                  `card-img-top rounded h-100 img-cover
-                  custom-shadow-${appStateContext?.state.isDarkMode ? "dark" : "light"}`}
-								alt="Ruzafa swimming in an XTERRA."
-							/>
-						</div>
-					</div>
-					<div className="col col-md-6 col-lg-8">
-						<div
-							className={
-                `card h-100 custom-shadow-${appStateContext?.state.isDarkMode ? "dark bg-dark" : "light"}`
-              }
-						>
-							<div className="card-body">
-								<br className="d-none d-lg-block" />
-								<br className="d-none d-lg-block" />
-								<p className="card-text text-justify">{json.paragraphs[1]}</p>
-								<br />
-								<p className="card-text text-justify mt-2">
-									{json.paragraphs[2]}
-								</p>
-								<br />
-								<p className="card-text text-justify mt-2">
-									{json.paragraphs[3]}
-								</p>
-							</div>
-						</div>
-					</div>
-					<div className="col col-md-4 d-md-none">
-						<div className="card h-100">
-							<img
-								src={Swim}
-								className={
-                  `card-img-top rounded h-100 img-cover
-                  custom-shadow-${appStateContext?.state.isDarkMode ? "dark" : "light"}`
-                }
-								alt="Ruzafa swimming in an XTERRA."
-							/>
-						</div>
-					</div>
-					<div className="col col-md-6 col-lg-8 g-4">
-						<div
-							className={
-                `card h-100 custom-shadow-${appStateContext?.state.isDarkMode ? "dark bg-dark" : "light"}`
-              }
-            >
-							<div className="card-body">
-								<br className="d-none d-lg-block" />
-								<p className="card-text text-justify">{json.paragraphs[4]}</p>
-								<br />
-								<p className="card-text text-justify">{json.paragraphs[5]}</p>
-								<br />
-								<p className="card-text text-justify">{json.paragraphs[6]}</p>
-							</div>
-						</div>
-					</div>
-					<div className="col col-md-6 col-lg-4 d-none d-md-block">
-						<div className="card h-100">
-							<img
-								src={Run}
-								className={
-                  `card-img-top rounded h-100 img-cover
-                  custom-shadow-${appStateContext?.state.isDarkMode ? "dark" : "light"}`
-                }
-								alt="Ruzafa running in an XTERRA."
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br />
-		</div>
-	);
+  const nowParagraphs = t('about.now.paragraphs', { returnObjects: true });
+  const careerParagraphs = t('about.career.paragraphs', { returnObjects: true });
+  const highlights = t('about.highlights.items', { returnObjects: true });
+
+  return (
+    <section id="about" className="anchor about-section">
+      <div className="container">
+        <SectionHeader eyebrow={t('about.eyebrow')} title={t('about.title')} />
+
+        <div className="about-grid about-grid--now">
+          <div className="about-grid__content">
+            <span className="about-tag">{t('about.now.title')}</span>
+            <div className="about-prose">
+              {nowParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
+          <div className="about-grid__media">
+            <img src={Swim} className="about-photo" alt="Rubén Ruzafa swimming" loading="lazy" decoding="async" />
+          </div>
+        </div>
+
+        <div className="about-highlights">
+          <h3 className="about-highlights__title">{t('about.highlights.title')}</h3>
+          <div className="about-highlights__grid">
+            {highlights.map((item, i) => (
+              <div className="highlight-stat" key={i}>
+                <span className="highlight-stat__value">{item.value}</span>
+                <span className="highlight-stat__label">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="about-grid about-grid--career">
+          <div className="about-grid__media">
+            <img src={Run} className="about-photo" alt="Rubén Ruzafa running" loading="lazy" decoding="async" />
+          </div>
+          <div className="about-grid__content">
+            <span className="about-tag about-tag--muted">{t('about.career.title')}</span>
+            <div className="about-prose">
+              {careerParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default About;
