@@ -1,5 +1,3 @@
-import { stream } from '@netlify/functions';
-import { Readable } from 'node:stream';
 import { SITE_TITLE, SITE_URL } from '../../src/constants/site.js';
 import { KNOWLEDGE_JSON } from '../../src/generated/knowledge.js';
 
@@ -35,10 +33,6 @@ function isRateLimited(ip) {
   return entry.count > RATE_LIMIT;
 }
 
-function getJsonStream(body) {
-  return Readable.from(Buffer.from(JSON.stringify(body)));
-}
-
 function corsHeaders() {
   return {
     'Access-Control-Allow-Origin': '*',
@@ -47,43 +41,38 @@ function corsHeaders() {
   };
 }
 
-export const handler = stream(async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 204, headers: corsHeaders() };
+function jsonResponse(body, status) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
+  });
+}
+
+export default async (request) => {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, { status: 204, headers: corsHeaders() });
   }
 
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-      body: getJsonStream({ error: 'Method not allowed' }),
-    };
+  if (request.method !== 'POST') {
+    return jsonResponse({ error: 'Method not allowed' }, 405);
   }
 
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {
-    return {
-      statusCode: 503,
-      headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-      body: getJsonStream({ error: 'Chat service not configured' }),
-    };
+    return jsonResponse({ error: 'Chat service not configured' }, 503);
   }
 
   const ip =
-    event.headers['x-forwarded-for']?.split(',')[0]?.trim() ??
-    event.headers['client-ip'] ??
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    request.headers.get('client-ip') ??
     'unknown';
 
   if (isRateLimited(ip)) {
-    return {
-      statusCode: 429,
-      headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-      body: getJsonStream({ error: 'Too many requests' }),
-    };
+    return jsonResponse({ error: 'Too many requests' }, 429);
   }
 
   try {
-    const body = JSON.parse(event.body ?? '{}');
+    const body = await request.json();
     const userMessages = (body.messages ?? []).slice(-10);
 
     const model =
@@ -112,37 +101,24 @@ export const handler = stream(async (event) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('OpenRouter error:', errorText);
-      return {
-        statusCode: 502,
-        headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-        body: getJsonStream({ error: 'Upstream error' }),
-      };
+      return jsonResponse({ error: 'Upstream error' }, 502);
     }
 
     if (!response.body) {
-      return {
-        statusCode: 502,
-        headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-        body: getJsonStream({ error: 'No stream body' }),
-      };
+      return jsonResponse({ error: 'No stream body' }, 502);
     }
 
-    return {
-      statusCode: 200,
+    return new Response(response.body, {
+      status: 200,
       headers: {
         ...corsHeaders(),
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         Connection: 'keep-alive',
       },
-      body: response.body,
-    };
+    });
   } catch (err) {
     console.error('Chat handler error:', err);
-    return {
-      statusCode: 500,
-      headers: { ...corsHeaders(), 'Content-Type': 'application/json' },
-      body: getJsonStream({ error: 'Internal server error' }),
-    };
+    return jsonResponse({ error: 'Internal server error' }, 500);
   }
-});
+};
