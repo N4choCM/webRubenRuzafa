@@ -106,6 +106,7 @@ body.app-mode-dark .chat-bubble--assistant {
   padding: 0.75rem;
   border-top: 1px solid var(--color-border);
   flex-shrink: 0;
+  min-width: 0;
 }
 
 body.app-mode-dark .chat-panel__input-area {
@@ -113,12 +114,15 @@ body.app-mode-dark .chat-panel__input-area {
 }
 
 .chat-panel__input-area textarea {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
   resize: none;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 0.625rem 0.75rem;
-  font-size: 0.875rem;
+  /* 16px prevents iOS Safari from zooming on focus */
+  font-size: 16px;
   background: transparent;
   color: var(--color-text);
   outline: none;
