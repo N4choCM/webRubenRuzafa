@@ -7,7 +7,7 @@ const PageMeta = () => {
   useEffect(() => {
     const applyMeta = () => {
       document.documentElement.lang = (i18n.resolvedLanguage || i18n.language || 'es').split('-')[0];
-      document.title = t('meta.title');
+      document.title = t('meta.pageTitle');
 
       const description = t('meta.description');
       let meta = document.querySelector('meta[name="description"]');
